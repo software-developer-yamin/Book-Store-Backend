@@ -1,17 +1,14 @@
-# RESTful API Node Server Boilerplate
+# RESTful API Bookstore
 
-A boilerplate/starter project for quickly building RESTful APIs using [Node.js](https://nodejs.org), [TypeScript](https://www.typescriptlang.org), [Express](https://expressjs.com), and [Prisma](https://www.prisma.io).
-
-This project is an adaptation of the project [RESTful API Node Server Boilerplate](https://github.com/hagopj13/node-express-boilerplate) using a [PostgreSQL](https://www.postgresql.org) database with [Prisma](https://www.prisma.io) ORM. Many of the files are just an adaptation to [TypeScript](https://www.typescriptlang.org) from the files of the previously mentioned project.
+A robust and scalable RESTful API for managing a bookstore, built with Node.js, TypeScript, Express, and PostgreSQL.
 
 ## Quick Start
 
 Clone the repo:
 
 ```bash
-git clone --depth 1 https://github.com/antonio-lazaro/prisma-express-typescript-boilerplate.git
-cd prisma-express-typescript-boilerplate
-npx rimraf ./.git
+git clone --depth 1 https://github.com/software-developer-yamin/Book-Store-Backend.git
+cd Book-Store-Backend
 ```
 
 Install the dependencies:
@@ -30,32 +27,27 @@ cp .env.example .env
 
 ## Table of Contents
 
-- [RESTful API Node Server Boilerplate](#restful-api-node-server-boilerplate)
-  - [Quick Start](#quick-start)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-  - [Commands](#commands)
-  - [Environment Variables](#environment-variables)
-  - [Project Structure](#project-structure)
-  - [API Documentation](#api-documentation)
-    - [API Endpoints](#api-endpoints)
-  - [Error Handling](#error-handling)
-  - [Validation](#validation)
-  - [Authentication](#authentication)
-  - [Authorization](#authorization)
-  - [Logging](#logging)
-  - [Linting](#linting)
-  - [Contributing](#contributing)
-  - [Inspirations](#inspirations)
-  - [License](#license)
+- [Quick Start](#quick-start)
+- [Table of Contents](#table-of-contents)
+- [Features](#features)
+- [Commands](#commands)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+  - [API Endpoints](#api-endpoints)
+- [Error Handling](#error-handling)
+- [Validation](#validation)
+- [Authentication](#authentication)
+- [Authorization](#authorization)
+- [Logging](#logging)
+- [Linting](#linting)
 
 ## Features
 
-- **SQL database**: [PostgreSQL](https://www.postgresql.org) object data modeling using [Prisma](https://www.prisma.io) ORM
+- **SQL database**: [PostgreSQL](https://www.postgresql.org) object data modeling using [Knex](https://knexjs.org)
 - **Authentication and authorization**: using [passport](http://www.passportjs.org)
 - **Validation**: request data validation using [Joi](https://joi.dev)
 - **Logging**: using [winston](https://github.com/winstonjs/winston) and [morgan](https://github.com/expressjs/morgan)
-- `future` **Testing**: unit and integration tests using [Jest](https://jestjs.io)
 - **Error handling**: centralized error handling mechanism
 - **API documentation**: with [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc) and [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express)
 - **Process management**: advanced production process management using [PM2](https://pm2.keymetrics.io)
@@ -86,27 +78,11 @@ Running in production:
 yarn start
 ```
 
-Testing:
-
-```bash
-# run all tests
-yarn test
-
-# run all tests in watch mode
-yarn test:watch
-
-# run test coverage
-yarn coverage
-```
-
 Database:
 
 ```bash
 # push changes to db
 yarn db:push
-
-# start prisma studio
-yarn db:studio
 ```
 
 Docker:
@@ -117,9 +93,6 @@ yarn docker:dev
 
 # run docker container in production mode
 yarn docker:prod
-
-# run all tests in a docker container
-yarn docker:test
 
 # run docker container with PostgreSQL db
 yarn docker:dev-db:start
@@ -211,6 +184,22 @@ List of available routes:
 `GET /v1/users/:userId` - get user\
 `PATCH /v1/users/:userId` - update user\
 `DELETE /v1/users/:userId` - delete user
+
+**Book routes:**\
+`POST /v1/books` - create a book\
+`GET /v1/books` - get all books\
+`GET /v1/books/:bookId` - get a specific book\
+`PATCH /v1/books/:bookId` - update a book\
+`DELETE /v1/books/:bookId` - delete a book\
+`GET /v1/books/author/:authorId` - get books by author
+
+**Author routes:**\
+`POST /v1/authors` - create an author\
+`GET /v1/authors` - get all authors\
+`GET /v1/authors/:authorId`- get a specific author\
+`PATCH /v1/authors/:authorId` - update an author\
+`DELETE /v1/authors/:authorId` - delete an author\
+`GET /v1/authors/:authorId/books` - get books by author
 
 ## Error Handling
 
@@ -356,16 +345,3 @@ To modify the ESLint configuration, update the `.eslintrc.json` file. To modify 
 To prevent a certain file or directory from being linted, add it to `.eslintignore` and `.prettierignore`.
 
 To maintain a consistent coding style across different IDEs, the project contains `.editorconfig`
-
-## Contributing
-
-Contributions are more than welcome! Please check out the [contributing guide](CONTRIBUTING.md).
-
-## Inspirations
-
-- [RESTful API Node Server Boilerplate](https://github.com/hagopj13/node-express-boilerplate)
-
-## License
-
-[MIT](LICENSE)
-# Book-Store-Backend
